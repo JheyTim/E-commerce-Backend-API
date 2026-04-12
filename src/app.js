@@ -1,22 +1,26 @@
-const express = require("express");
+const express = require('express');
 
-// Import health routes
-const healthRoutes = require("./routes/health.routes");
+// Import routes
+const healthRoutes = require('./routes/health.routes');
+const categoryRoutes = require('./routes/category.routes');
+const productRoutes = require('./routes/product.routes');
 
-// Create Express app instance
+// Create app instance
 const app = express();
 
-// Middleware to parse incoming JSON requests
+// Middleware to parse JSON
 app.use(express.json());
 
-// Register health route with base path
-app.use("/api/v1/health", healthRoutes);
+// Register routes with base paths
+app.use('/api/v1/health', healthRoutes);
+app.use('/api/v1/categories', categoryRoutes);
+app.use('/api/v1/products', productRoutes);
 
 // Handle unknown routes (404)
-app.use((req, res) => {
+app.use((_req, res) => {
   res.status(404).json({
     success: false,
-    message: "Route not found",
+    message: 'Route not found',
   });
 });
 
