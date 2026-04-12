@@ -1,17 +1,17 @@
 services:
   app:
-    build: .
+    build: . # Build from Dockerfile
     container_name: ecommerce_app
     ports:
-      - "5000:5000"
+      - '5000:5000' # Map local port to container
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/app # Sync local files
+      - /app/node_modules # Prevent overwrite
     depends_on:
-      - postgres
-      - redis
+      - postgres # Ensure DB starts first
+      - redis # Ensure Redis starts first
     env_file:
-      - .env
+      - .env # Load environment variables
 
   postgres:
     image: postgres:latest
@@ -22,7 +22,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -31,7 +31,7 @@ services:
     container_name: ecommerce_redis
     restart: always
     ports:
-      - "6379:6379"
+      - '6379:6379'
 
 volumes:
   postgres_data:
