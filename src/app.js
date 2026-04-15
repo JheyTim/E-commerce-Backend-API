@@ -4,6 +4,8 @@ const express = require('express');
 const healthRoutes = require('./routes/health.routes');
 const categoryRoutes = require('./routes/category.routes');
 const productRoutes = require('./routes/product.routes');
+const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
 
 // Create app instance
 const app = express();
@@ -13,6 +15,8 @@ app.use(express.json());
 
 // Register routes with base paths
 app.use('/api/v1/health', healthRoutes);
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/categories', categoryRoutes);
 app.use('/api/v1/products', productRoutes);
 

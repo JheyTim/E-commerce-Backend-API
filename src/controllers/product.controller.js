@@ -2,7 +2,7 @@
 const { Product, Category } = require('../models');
 
 // Create a new product
-const createProduct = async (req, res) => {
+exports.createProduct = async (req, res) => {
   try {
     const { name, description, price, stock, categoryId } = req.body;
 
@@ -38,7 +38,7 @@ const createProduct = async (req, res) => {
 };
 
 // Get all products with category info
-const getProducts = async (req, res) => {
+exports.getProducts = async (req, res) => {
   try {
     const products = await Product.findAll({
       include: [
@@ -64,7 +64,7 @@ const getProducts = async (req, res) => {
 };
 
 // Get single product by ID
-const getProductById = async (req, res) => {
+exports.getProductById = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -99,7 +99,7 @@ const getProductById = async (req, res) => {
 };
 
 // Update product
-const updateProduct = async (req, res) => {
+exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, price, stock, categoryId, isActive } = req.body;
@@ -149,7 +149,7 @@ const updateProduct = async (req, res) => {
 };
 
 // Delete product
-const deleteProduct = async (req, res) => {
+exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -175,13 +175,4 @@ const deleteProduct = async (req, res) => {
       message: error.message,
     });
   }
-};
-
-// Export all controller functions
-module.exports = {
-  createProduct,
-  getProducts,
-  getProductById,
-  updateProduct,
-  deleteProduct,
 };

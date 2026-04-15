@@ -4,10 +4,12 @@ const { sequelize } = require('../config/db');
 // Import model definitions
 const CategoryModel = require('./category.model');
 const ProductModel = require('./product.model');
+const UserModel = require('./user.model');
 
 // Initialize models
 const Category = CategoryModel(sequelize);
 const Product = ProductModel(sequelize);
+const User = UserModel(sequelize);
 
 // =====================
 // Model Associations
@@ -30,4 +32,5 @@ module.exports = {
   sequelize,
   Category,
   Product,
+  User,
 };

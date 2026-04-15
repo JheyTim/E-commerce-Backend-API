@@ -2,7 +2,7 @@
 const { Category } = require('../models');
 
 // Create a new category
-const createCategory = async (req, res) => {
+exports.createCategory = async (req, res) => {
   try {
     // Extract data from request body
     const { name, description } = req.body;
@@ -28,7 +28,7 @@ const createCategory = async (req, res) => {
 };
 
 // Get all categories
-const getCategories = async (req, res) => {
+exports.getCategories = async (req, res) => {
   try {
     // Fetch categories sorted by newest
     const categories = await Category.findAll({
@@ -45,10 +45,4 @@ const getCategories = async (req, res) => {
       message: error.message,
     });
   }
-};
-
-// Export functions
-module.exports = {
-  createCategory,
-  getCategories,
 };
